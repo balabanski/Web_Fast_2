@@ -1,5 +1,5 @@
 import sqlalchemy
-from .users import users_table
+from app.models.users import users_table
 metadata=sqlalchemy.MetaData()
 
 posts_table=sqlalchemy.Table(

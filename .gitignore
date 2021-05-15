@@ -147,3 +147,4 @@ redisdata
 !config/.env
 static/**
 media/**
+my_env.py

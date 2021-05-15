@@ -21,7 +21,7 @@ tokens_table= sqlalchemy.Table(
     sqlalchemy.Column("id",sqlalchemy.Integer, primary_key=True),
     sqlalchemy.Column("token",
                       UUID(as_uuid=False),
-                      server_default=sqlalchemy.Text("uuid_generate_v4()"),
+                      server_default=sqlalchemy.text("uuid_generate_v4()"),
                       unique=True,
                       nullable=False,
                       index=True,
