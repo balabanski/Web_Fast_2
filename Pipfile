@@ -13,6 +13,8 @@ databases = "*"
 psycopg2 = "*"
 psycopg2-binary = "*"
 asyncpg = "*"
+pydantic = {extras = ["email"], version = "*"}
+python-multipart = "*"
 
 [dev-packages]
 pytest = "*"
