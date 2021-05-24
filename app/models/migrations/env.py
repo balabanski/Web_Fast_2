@@ -11,12 +11,12 @@ from app.models import posts, users
 # Alembic Config объект предоставляет доступ
 # к переменным из файла alembic.ini
 config = context.config
-
 section = config.config_ini_section
-config.set_section_option(section, "DB_USER", environ.get("DB_USER"))
-config.set_section_option(section, "DB_PASS", environ.get("DB_PASS"))
-config.set_section_option(section, "DB_NAME", environ.get("DB_NAME"))
-config.set_section_option(section, "DB_HOST", environ.get("DB_HOST"))
+config.set_section_option(section, "PGUSER", environ.get("PGUSER"))
+'''config.set_section_option(section, "DB_PASS", environ.get("DB_PASS"))'''
+config.set_section_option(section, "PGPORT", environ.get("PGPORT"))
+config.set_section_option(section, "PGDATABASE", environ.get("PGDATABASE"))
+
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

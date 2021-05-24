@@ -1,13 +1,14 @@
-import sqlalchemy
+from sqlalchemy import MetaData, Table, Column, Integer, String, Text, ForeignKey, DateTime
 from app.models.users import users_table
-metadata=sqlalchemy.MetaData()
 
-posts_table=sqlalchemy.Table(
+metadata = MetaData()
+
+posts_table = Table(
     "posts",
     metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer,primary_key=True),
-    sqlalchemy.Column("user_id", sqlalchemy.ForeignKey("users_table.c.id")),
-    sqlalchemy.Column("created_at", sqlalchemy.DateTime()),
-    sqlalchemy.Column("title", sqlalchemy.String(100)),
-    sqlalchemy.Column("content",sqlalchemy.Text())
+    Column("id", Integer, primary_key=True),
+    Column("user_id", ForeignKey(users_table.c.id)),
+    Column("created_at", DateTime()),
+    Column("title", String(100)),
+    Column("content", Text()),
 )

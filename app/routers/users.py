@@ -1,7 +1,8 @@
 from fastapi import APIRouter, HTTPException
+from fastapi import Depends
+from fastapi.security import OAuth2PasswordRequestForm
 from app.schemas import users
 from app.utils import users as users_utils
-
 
 router = APIRouter()
 
@@ -12,8 +13,6 @@ async def create_user(user: users.UserCreate):
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")
     return await users_utils.create_user(user=user)
-from fastapi import Depends
-from fastapi.security import OAuth2PasswordRequestForm
 
 
 @router.post("/auth", response_model=users.TokenBase)
@@ -24,7 +23,7 @@ async def auth(form_data: OAuth2PasswordRequestForm = Depends()):
         raise HTTPException(status_code=400, detail="Incorrect email or password")
 
     if not users_utils.validate_password(
-        password=form_data.password, hashed_password=user["hashed_password"]
+            password=form_data.password, hashed_password=user["hashed_password"]
     ):
         raise HTTPException(status_code=400, detail="Incorrect email or password")
 

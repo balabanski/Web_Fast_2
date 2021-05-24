@@ -1,13 +1,13 @@
-
 from typing import Optional
 from pydantic import UUID4, BaseModel, EmailStr, Field, validator
 from datetime import datetime
+
+
 class UserCreate(BaseModel):
     """ Проверяет sign-up запрос """
     email: EmailStr
     name: str
     password: str
-
 
 
 class UserBase(BaseModel):
@@ -26,7 +26,7 @@ class TokenBase(BaseModel):
         allow_population_by_field_name = True
 
     @validator("token")
-    def hexlify_token(cls, value):
+    def hexlify_token(self, value):
         """ Конвертирует UUID в hex строку """
         return value.hex
 
