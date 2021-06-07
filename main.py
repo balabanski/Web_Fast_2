@@ -2,6 +2,7 @@
 from fastapi import FastAPI
 from app.models.database import database
 from app.models.posts import *
+from app.models.users import *
 from sqlalchemy.sql.expression import select, desc
 
 
@@ -38,5 +39,3 @@ async def read_root():
         .order_by(desc(posts_table.c.created_at))
     )
     return await database.fetch_all(query)
-from app.routers import users
-app.include_router(users.router)
