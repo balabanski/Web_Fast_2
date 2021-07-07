@@ -5,6 +5,8 @@ from app.utils import users as users_utils
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordRequestForm
 
+from app.utils.dependecies import get_current_user
+
 router = APIRouter()
 
 
@@ -29,3 +31,8 @@ async def auth(form_data: OAuth2PasswordRequestForm = Depends()):
         raise HTTPException(status_code=400, detail="Incorrect email or password")
 
     return await users_utils.create_user_token(user_id=user["id"])
+
+
+@router.get("/users/me", response_model=users.UserBase)
+async def read_users_me(current_user: users.User = Depends(get_current_user)):
+    return current_user
