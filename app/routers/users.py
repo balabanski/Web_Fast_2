@@ -5,7 +5,7 @@ from app.utils import users as users_utils
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordRequestForm
 
-from app.utils.dependecies import get_current_user
+from app.utils.dependencies import get_current_user
 
 router = APIRouter()
 

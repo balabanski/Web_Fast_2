@@ -5,7 +5,7 @@ from app.models.posts import *
 from app.models.users import *
 from sqlalchemy.sql.expression import select, desc
 
-from app.routers import users
+from app.routers import users, posts
 
 
 app = FastAPI()
@@ -44,3 +44,4 @@ async def read_root():
 
 
 app.include_router(users.router)
+app.include_router(posts.router)
