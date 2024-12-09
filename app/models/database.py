@@ -9,5 +9,6 @@ DB_NAME = environ.get("DB_NAME", "postgres")
 SQLALCHEMY_DATABASE_URL = (
     f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:5432/{DB_NAME}"
 )
+
 # создаем объект database, который будет использоваться для выполнения запросов
 database = databases.Database(SQLALCHEMY_DATABASE_URL)
